@@ -7,11 +7,9 @@ module.exports.router = (message) => {
   switch(channel.id) {
     case json.guiltygearRoomCodeChat.id:
         require("../GuiltyGear/base")(message);
-
       break;
     case json.terrariaServerStatusChat.id:
         require("../Terraria/base")(message);
-
       break;
   }
 }

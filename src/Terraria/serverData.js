@@ -58,3 +58,7 @@ module.exports.createServerData = () => {
           timestamp: "05/11/22",   
     }]}))
 }
+
+module.exports.getChangesFromMessage = (message) => {
+
+}

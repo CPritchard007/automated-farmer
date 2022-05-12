@@ -7,6 +7,9 @@
     },"rulesChat": {
         "id": "971476587977510952",
         "message": "974315164629356595"
+    }, "welcomeChat": {
+        "id": "974155014576676954",
+        "serverMessage": "Welcome [user] to the ranch, feel free to stick around"
     },
     "terrariaServerStatusChat": {
         "id": "971463641545207848",
