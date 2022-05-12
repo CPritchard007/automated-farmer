@@ -1,6 +1,7 @@
 require("dotenv").config();
 const json = require("./assets/application_data.json");
 
+const Rules = require("./src/Base/rules");
 const Roles = require("./src/Base/roles");
 const Terraria = require("./src/Terraria/serverData");
 const Messages = require("./src/Base/messages");
@@ -12,7 +13,6 @@ const HOUR = 60 * MINUTE
 
 const { Client, Intents, Channel } = require('discord.js');
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGE_REACTIONS, Intents.FLAGS.GUILD_MESSAGES]});
-
 
 
 String.prototype.override = function(){
@@ -36,6 +36,7 @@ module.exports.json = json;
 client.on('ready', () => {
   Roles.updateRolesChat();
   Terraria.updateServerData();
+  Rules.updateRulesMessage();
 
 
   setInterval(function () {

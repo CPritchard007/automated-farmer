@@ -87,7 +87,7 @@ module.exports.updateRolesChat = () => {
 
     client.channels.fetch(json.rolesChat.id).then(channel => channel.messages.fetch(json.rolesChat.message).then(message => {
     message.edit({embeds : [{
-        color: 0x0099ff,
+        color: json.embed.color,
         title: json.embed.title,
         description: json.embed.description,
         thumbnail: {
@@ -121,7 +121,7 @@ module.exports.createRoles = () => {
     
     client.channels.fetch(json.rolesChat.id).then(channel => {
         const message = channel.send({embeds : [{
-          color: 0x0099ff,
+          color: json.embed.color,
           title: json.embed.title,
           description: json.embed.description,
           thumbnail: {

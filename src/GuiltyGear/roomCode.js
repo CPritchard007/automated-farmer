@@ -24,7 +24,7 @@ module.exports.createRoomCode = () => {
     const json = require("../../runnable").json;
 
     client.channels.fetch(json.guiltygearRoomCodeChat.id).then(channel => channel.send({embeds : [{
-        color: 0x0099ff,
+        color: json.embed.color,
         title: "Current Room Code",
         description: "enter the code into the chat to automatically set the code below",
     

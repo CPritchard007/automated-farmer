@@ -3,7 +3,7 @@ module.exports.updateServerData = (message) => {
     const json = require("../../runnable").json;
 
     client.channels.fetch(json.terrariaServerStatusChat.id).then(channel => channel.messages.fetch(json.terrariaServerStatusChat.message).then(message => message.edit({embeds: [{
-        color: 0x0099ff,
+        color: json.embed.color,
         title: json.terrariaServerDialog.header,
         author: {
           name: 'impatientcow915',
@@ -34,7 +34,7 @@ module.exports.createServerData = () => {
 
     client.channels.fetch(json.terrariaServerStatusChat.id).then(channel => 
         channel.send({embeds: [{
-          color: 0x0099ff,
+          color: json.embed.color,
           title: json.terrariaServerDialog.header,
           author: {
             name: 'impatientcow915',

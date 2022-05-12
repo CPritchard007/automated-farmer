@@ -4,6 +4,9 @@
     "rolesChat": {
         "id": "972145563359408188",
         "message": "973330194700070962"
+    },"rulesChat": {
+        "id": "971476587977510952",
+        "message": "974315164629356595"
     },
     "terrariaServerStatusChat": {
         "id": "971463641545207848",
@@ -14,6 +17,7 @@
         "message": "973429197798277170"
     },
     "embed" : {
+        "color": "0x9900FF",
         "title": "Select Your Roles",
         "description": "Choose your roles to keep yourself informed with updates",
         "thumbnail": "https://i.imgur.com/EDO5ky1.png",
