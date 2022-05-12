@@ -69,7 +69,7 @@ module.exports.removeRoles = (reaction, user) => {
         member.roles.remove(guild.roles.cache.find(role => role.name === "Tower Unite"));
         break;
       case "overwatch":
-        member.roles.add(guild.roles.cache.find(role => role.name === "Overwatch"));
+        member.roles.remove(guild.roles.cache.find(role => role.name === "Overwatch"));
         break;
       case "apex":
         member.roles.remove(guild.roles.cache.find(role => role.name === "Apex Legends"));
