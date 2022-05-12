@@ -1,0 +1,40 @@
+{
+    "client": {"id" : "972139466028351548"},
+    "guild": {"id": "971247570213036072"},
+    "rolesChat": {
+        "id": "972145563359408188",
+        "message": "973330194700070962"
+    },
+    "terrariaServerStatusChat": {
+        "id": "971463641545207848",
+        "message": "974112906847334401"
+    },
+    "guiltygearRoomCodeChat": {
+        "id": "973046189878575155",
+        "message": "973429197798277170"
+    },
+    "embed" : {
+        "title": "Select Your Roles",
+        "description": "Choose your roles to keep yourself informed with updates",
+        "thumbnail": "https://i.imgur.com/EDO5ky1.png",
+        "fields": [
+            {
+                "name": "\u200b",
+                "value": "[fortnite]: Fortnite\n[warzone]: Warzone\n[guiltygear]: Guilty Gear\n[terraria]: Terraria\n[minecraft]: Minecraft\n\n[terminal]: Developer",
+                "inline" : true
+            }, {
+                "name": "\u200b",
+                "value": "[towerunite]: Tower Unite\n[dbfz]: Dragonball FighterZ\n[overwatch]: Overwatch\n[apex]: Apex Legends",
+                "inline": true
+            }
+        ]
+    },
+    "terrariaServerDialog": {
+        "header": "   --Terraria Server--",
+        "ip": " impterrariaserver.tplinkdns.com ",
+        "port": " 7777 ",
+        "password": " $$$ ",
+        "updated": "05/11/2022",
+        "comment": "   --Allow Platforms--\nPC\u2001\u2001\u2001\u2001 | 🟢\nMobile\u2001   \u2001 | 🟢\nConsole\u2001\u2001| 🟢"
+    }
+}
