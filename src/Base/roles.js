@@ -79,3 +79,70 @@ module.exports.removeRoles = (reaction, user) => {
         break;
     }   
 }
+
+module.exports.updateRolesChat = () => {
+    const client = require("../../runnable").client;
+    const json = require("../../runnable").json;
+    const Icons = require("../Config").Icons;
+
+    client.channels.fetch(json.rolesChat.id).then(channel => channel.messages.fetch(json.rolesChat.message).then(message => {
+    message.edit({embeds : [{
+        color: 0x0099ff,
+        title: json.embed.title,
+        description: json.embed.description,
+        thumbnail: {
+          url: json.embed.thumbnail,
+        },
+        fields: json.embed.fields.map(field => {
+          return {
+            name: field.name.override(),
+            value: field.value.override(),
+            inline: field.inline
+          }
+        }),
+      }]});
+      message.react(Icons.fortnite)
+      message.react(Icons.warzone)
+      message.react(Icons.guiltyGear)
+      message.react(Icons.minecraft)
+      message.react(Icons.dragonball)
+      message.react(Icons.towerUnite)
+      message.react(Icons.overwatch)
+      message.react(Icons.apex)
+      message.react(Icons.terminal)
+  }));
+}
+
+
+module.exports.createRoles = () => {
+    const client = require("../../runnable").client;
+    const json = require("../../runnable").json;
+    const Icons = require("../Config").Icons;
+    
+    client.channels.fetch(json.rolesChat.id).then(channel => {
+        const message = channel.send({embeds : [{
+          color: 0x0099ff,
+          title: json.embed.title,
+          description: json.embed.description,
+          thumbnail: {
+            url: json.embed.thumbnail,
+          },
+          fields: json.embed.fields.map(field => {
+            return {
+              name: field.name.override(),
+              value: field.value.override(),
+              inline: field.inline
+            }
+          }),
+        }]})
+        message.react(Icons.fortnite)
+        message.react(Icons.warzone)
+        message.react(Icons.guiltyGear)
+        message.react(Icons.minecraft)
+        message.react(Icons.dragonball)
+        message.react(Icons.towerUnite)
+        message.react(Icons.overwatch)
+        message.react(Icons.apex)
+        message.react(Icons.terminal)
+    });
+}
