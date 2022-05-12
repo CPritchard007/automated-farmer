@@ -1,6 +1,9 @@
 require("dotenv").config();
 const json = require("./assets/application_data.json");
 
+const Roles = require("./src/Base/roles");
+const Icons = require("./src/Config").Icons;
+
 const SECOND = 1000
 const MINUTE = 60 * SECOND
 const HOUR = 60 * MINUTE
@@ -8,30 +11,25 @@ const HOUR = 60 * MINUTE
 const { Client, Intents, Channel } = require('discord.js');
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGE_REACTIONS, Intents.FLAGS.GUILD_MESSAGES]});
 
-const fortnite = "<:fortnite:972361977089380392>";
-const warzone = "<:warzone:972361976858681365>";
-const guiltyGear = "<:guiltygear:972361978809053205>";
-const terminal = "<:terminal:972361976623804418>";
-const minecraft = "<:minecraft:972378490609487912>";
-const terraria = "<:terraria:972361979383664700>";
-const dragonball = "<:dragonball:973345410959695914>";
-const towerUnite = "<:towerunite:973358803993133088>";
-const overwatch = "<:overwatch:973357545852895283>";
-const apex = "<:apex:973358821886021642>";
+
 
 String.prototype.override = function(){
   return this
-  .replace("[fortnite]", fortnite)
-  .replace("[warzone]", warzone)
-  .replace("[guiltygear]", guiltyGear)
-  .replace("[terminal]", terminal)
-  .replace("[minecraft]", minecraft)
-  .replace("[terraria]", terraria)
-  .replace("[dbfz]", dragonball)
-  .replace("[towerunite]", towerUnite)
-  .replace("[apex]", apex)
-  .replace("[overwatch]", overwatch)
+  .replace("[fortnite]", Icons.fortnite)
+  .replace("[warzone]", Icons.warzone)
+  .replace("[guiltygear]", Icons.guiltyGear)
+  .replace("[terminal]", Icons.terminal)
+  .replace("[minecraft]", Icons.minecraft)
+  .replace("[terraria]", Icons.terraria)
+  .replace("[dbfz]", Icons.dragonball)
+  .replace("[towerunite]", Icons.towerUnite)
+  .replace("[apex]", Icons.apex)
+  .replace("[overwatch]", Icons.overwatch)
 }
+
+
+module.exports.client = client;
+module.exports.json = json;
 
 client.on('ready', () => {
   updteCurrentRoleChat();
@@ -43,79 +41,12 @@ client.on('ready', () => {
 
 client.on('messageReactionAdd', (reaction, user) => {
   if (reaction.message.id != json.rolesChat.message) return;
-  let guild = client.guilds.cache.get(json.guild.id);
-  let member = guild.members.cache.get(user.id);
-
-  switch (reaction.emoji.name) {
-    case "fortnite":
-      member.roles.add(guild.roles.cache.find(role => role.name === "Fortnite"));
-      break;
-    case "warzone":
-      member.roles.add(guild.roles.cache.find(role => role.name === "Warzone"));
-      break;
-    case "guiltygear":
-      member.roles.add(guild.roles.cache.find(role => role.name === "Guilty Gear"));
-      break;
-    case "minecraft":
-      member.roles.add(guild.roles.cache.find(role => role.name === "Minecraft"));
-      break;
-    case "terminal":
-      member.roles.add(guild.roles.cache.find(role => role.name === "Developers"));
-      break;
-    case "dragonball":
-      member.roles.add(guild.roles.cache.find(role => role.name === "DBFZ"));
-      break;
-    case "towerunite":
-      member.roles.add(guild.roles.cache.find(role => role.name === "Tower Unite"));
-      break;
-    case "overwatch":
-      member.roles.add(guild.roles.cache.find(role => role.name === "Overwatch"));
-      break;
-    case "apex":
-      member.roles.add(guild.roles.cache.find(role => role.name === "Apex Legends"));
-      break;
-    default:
-      reaction.remove();
-      break;
-  }
+  Roles.addRoles (reaction, user)
 })
 
 client.on('messageReactionRemove', (reaction, user) => {
   if (reaction.message.id != json.rolesChat.message) return;
-  let guild = client.guilds.cache.get(json.guild.id);
-  let member = guild.members.cache.get(user.id);
-  
-  switch (reaction.emoji.name) {
-    case "fortnite":
-      member.roles.remove(guild.roles.cache.find(role => role.name === "Fortnite"));
-      break;
-    case "warzone":
-      member.roles.remove(guild.roles.cache.find(role => role.name === "Warzone"));
-      break;
-    case "guiltygear":
-      member.roles.remove(guild.roles.cache.find(role => role.name === "Guilty Gear"));
-      break;
-    case "minecraft":
-      member.roles.remove(guild.roles.cache.find(role => role.name === "Minecraft"));
-      break;
-    case "terminal":
-      member.roles.remove(guild.roles.cache.find(role => role.name === "Developers"));
-      break;
-    case "dragonball":
-      member.roles.remove(guild.roles.cache.find(role => role.name === "DBFZ"));
-      break;
-    case "towerunite":
-      member.roles.remove(guild.roles.cache.find(role => role.name === "Tower Unite"));
-      break;
-    case "overwatch":
-      member.roles.remove(guild.roles.cache.find(role => role.name === "Overwatch"));
-      break;
-    case "apex":
-      member.roles.remove(guild.roles.cache.find(role => role.name === "Apex Legends"));
-      break;
-    default:
-      break;
-  }
+  Roles.removeRoles (reaction, user)
 })
 
 client.on("messageCreate", function(message){
@@ -169,15 +100,15 @@ function addInitialRoleChat () {
         }
       }),
     }]})
-      message.react(fortnite)
-      message.react(warzone)
-      message.react(guiltyGear)
-      message.react(minecraft)
-      message.react(dragonball)
-      message.react(towerUnite)
-      message.react(overwatch)
-      message.react(apex)
-      message.react(terminal)
+      message.react(Icons.fortnite)
+      message.react(Icons.warzone)
+      message.react(Icons.guiltyGear)
+      message.react(Icons.minecraft)
+      message.react(Icons.dragonball)
+      message.react(Icons.towerUnite)
+      message.react(Icons.overwatch)
+      message.react(Icons.apex)
+      message.react(Icons.terminal)
  });
 }
 
@@ -199,15 +130,15 @@ function updteCurrentRoleChat () {
           }
         }),
       }]});
-      message.react(fortnite)
-      message.react(warzone)
-      message.react(guiltyGear)
-      message.react(minecraft)
-      message.react(dragonball)
-      message.react(towerUnite)
-      message.react(overwatch)
-      message.react(apex)
-      message.react(terminal)
+      message.react(Icons.fortnite)
+      message.react(Icons.warzone)
+      message.react(Icons.guiltyGear)
+      message.react(Icons.minecraft)
+      message.react(Icons.dragonball)
+      message.react(Icons.towerUnite)
+      message.react(Icons.overwatch)
+      message.react(Icons.apex)
+      message.react(Icons.terminal)
   }));
 }
 
