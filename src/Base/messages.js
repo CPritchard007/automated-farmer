@@ -5,10 +5,10 @@ module.exports.router = (message) => {
   let currentMessage = message.content;
 
   switch(channel.id) {
-    case json.guiltygearRoomCodeChat.id:
+    case json.GuiltyGear.roomCode.id:
         require("../GuiltyGear/base")(message);
       break;
-    case json.terrariaServerStatusChat.id:
+    case json.Terraria.serverStatus.id:
         require("../Terraria/base")(message);
       break;
   }

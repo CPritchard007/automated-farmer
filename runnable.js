@@ -1,5 +1,5 @@
 require("dotenv").config();
-const json = require("./assets/application_data.json");
+const json = require('./src/System/jsonStorage').loadJson();
 
 const Rules = require("./src/Base/rules");
 const Roles = require("./src/Base/roles");
@@ -12,7 +12,7 @@ const SECOND = 1000
 const MINUTE = 60 * SECOND
 const HOUR = 60 * MINUTE
 
-const { Client, Intents, Channel } = require('discord.js');
+const { Client, Intents, Channel, Sticker } = require('discord.js');
 const client = new Client({ intents: [
   Intents.FLAGS.GUILDS,
   Intents.FLAGS.GUILD_MESSAGE_REACTIONS,

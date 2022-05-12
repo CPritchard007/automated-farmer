@@ -3,5 +3,5 @@ module.exports.sendMessage = (user) => {
     const json = require("../../runnable").json;
     const Icons = require("../Config").Icons;
 
-    client.channels.fetch(json.welcomeChat.id).then(channel => channel.send(json.welcomeChat.serverMessage.replace("[user]", "<@" + user.id + ">")))
+    client.channels.fetch(json.welcomeChat.id).then(channel => channel.send({content: json.welcomeChat.serverMessage.replace("[user]", "<@" + user.id + ">")}))
 }

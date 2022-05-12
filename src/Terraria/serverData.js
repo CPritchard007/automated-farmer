@@ -2,7 +2,7 @@ module.exports.updateServerData = (message) => {
     const client = require("../../runnable").client;
     const json = require("../../runnable").json;
 
-    client.channels.fetch(json.terrariaServerStatusChat.id).then(channel => channel.messages.fetch(json.terrariaServerStatusChat.message).then(message => message.edit({embeds: [{
+    client.channels.fetch(json.Terraria.serverStatus.id).then(channel => channel.messages.fetch(json.Terraria.serverStatus.message).then(message => message.edit({embeds: [{
         color: json.embed.color,
         title: json.terrariaServerDialog.header,
         author: {
