@@ -2,7 +2,8 @@ module.exports.updateCode = (message) => {
     let json = require("../../runnable").json;
     let jsonStorage = require("../System/jsonStorage");
     let roomCode = message.content.match(/\b(\w[a-zA-Z0-9]{3})\b|\n/);
-
+    if (roomCode == null) return;
+    
     json.GuiltyGear.roomCode.messageData = roomCode[0];
 
     message.channel.messages.fetch(json.GuiltyGear.roomCode.message).then (
